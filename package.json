@@ -1,0 +1,21 @@
+{
+  "name": "curso-node-will",
+  "version": "1.0.0",
+  "description": "curso de node ",
+  "main": "hello.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^4.5.3",
+    "mongoist": "^2.5.5"
+  },
+  "devDependencies": {
+    "jest": "^29.0.1",
+    "nodemon": "^2.0.19"
+  }
+}
