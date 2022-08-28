@@ -4,6 +4,15 @@ const controller = require('./controller/pokemon')
 const hpController = require('./controller/hp')
 const loginController = require('./controller/login')
 
+app.register(require('@fastify/multipart'))
+
+app.post('/upload', async (req,res) => {
+    const data = await req.file
+
+    console.log('file', data)
+    res.send('OK, recebido')
+})
+
 app.get('/', (req, res) => res.send('pong'))
 app.get('/pokemons', {
     preHandler: loginController.auth,
