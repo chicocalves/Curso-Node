@@ -8,7 +8,7 @@ const controller = {
                 const data = result.data.map(item =>{
                     return {
                         name: item.name,
-                        gender: item.gender
+                        actor: item.actor
                     }
                 })
                 res.send(data)
