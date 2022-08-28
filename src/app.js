@@ -17,6 +17,7 @@ app.setNotFoundHandler((req, res) =>{
 })
 
 app.setErrorHandler((error, req, res) =>{
+    console.error(error)
     res.status((error.status || 500))
     res.send(error.message || 'Algo deu errado')
 })

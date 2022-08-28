@@ -10,6 +10,9 @@ jest.mock('../src/config/mongo', () => {
                 },
                 async find() {
                     return [{ name: 'mock'}]
+                },
+                async insert() {
+                    return {_id: '000999'}
                 }
             }
         }
@@ -36,9 +39,14 @@ it('GET /pokemons/:id', async() =>{
 
 it('POST /pokemons', async() =>{
     const response = await app.inject({
-        method: 'GET',
-        url: '/pokemons'
+        method: 'POST',
+        url: '/pokemons',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify({ name: 'JaneDone'})
     })
+    const body = JSON.parse(response.body)
+    expect(response.statusCode).toBe(201)
+    expect(body._id).toBeDefined()
 })
 
 it('PUT /pokemons', () =>{
