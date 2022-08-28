@@ -3,6 +3,10 @@ const app = fastify()
 const controller = require('./controller/pokemon')
 const hpController = require('./controller/hp')
 const loginController = require('./controller/login')
+const fs = require('fs')
+const util = require('util')
+const { pipeline } = require('stream')
+//const pump = util.
 
 app.register(require('@fastify/multipart'))
 
