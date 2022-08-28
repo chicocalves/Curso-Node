@@ -1,7 +1,8 @@
-const { resetErrorsCount } = require('ajv/dist/compile/errors')
 const repository = require('../repository/pokemon')
 
 const controller = {
+/** @types {import('fastify').RouterHandlerMethod} */
+
     async list(req, res) {
         const query = req.query
 

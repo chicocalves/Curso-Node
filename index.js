@@ -1,3 +1,20 @@
 const app = require('./src/app')
+const cpus = require('os').cpus().length
+const cluster = require('cluster')
 
-app.listen({port: 3000})
+if(cluster.isMaster){
+    for (let i = 0; i < cpus; i++){
+        const worker = cluster.fork()
+
+        worker.on('exit', () => {
+            console.log('worker error')
+            cluster.fork()
+        })
+    }
+}else{
+    app.listen({port: 3000}, () => {
+        console.log('Server is up!')
+    })
+}
+
+

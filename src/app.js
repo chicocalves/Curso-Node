@@ -12,6 +12,10 @@ app.post('/pokemons', controller.create)
 app.put('/pokemons/:id', controller.update)
 app.delete('/pokemons/:id', controller.delete)
 
+app.setNotFoundHandler((req, res) =>{
+    res.status(404).send('Not Found')
+})
+
 app.setErrorHandler((error, req, res) =>{
     res.status((error.status || 500))
     res.send(error.message || 'Algo deu errado')
